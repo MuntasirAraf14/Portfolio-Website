@@ -10,6 +10,39 @@ body{
 
 }
 
+.headline-1{
+  @apply max-w-max;
+  background: -webkit-linear-gradient(0deg, #fafafa, #a1a1a1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.headline-1{
+  @apply text-5xl leading-tight font-bold lg:text-[55px] lg:leading-[1.15] tracking-tight text-zinc-50;
+}
+
+.container {
+  @apply xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.img-box{
+  @apply bg-zinc-700 overflow-hidden;
+}
+
+.img-cover{
+  @apply w-full h-full object-cover object-center transition-transform duration-500 ease-in-out;
+}
+
+
+
 /*Components*/
 
 /*Menu button*/
@@ -17,4 +50,20 @@ body{
   @apply w-10 h-10 grid place-items-center bg-zinc-50/20 rounded-xl ring-inset ring-1 ring-zinc-50/[0.02] backdrop-blur-2xl hover:bg-zinc-50/12 transition-transform transition-colors active:scale-95;
   /* Add duration and easing if not globally set or if you want specific ones */
   @apply duration-150 ease-in-out; /* Example duration and easing */
+}
+
+.btn .material-symbols-rounded{
+  @apply text-[18px]
+}
+
+.btn:has(.material-symbols-rounded) {
+  @apply pr-3
+}
+
+.btn-primary{
+  @apply h-10 rounded-2xl px-2 bg-zinc-50 text-zinc-900 hover:bg-zinc-50/70 active:bg-zinc-50/80 transition-colors;
+}
+
+.btn-outline{
+  @apply h-9  py-1 bg-zinc-800 rounded-2xl px-3 border border-zinc-50/20 text-zinc-50 hover:bg-zinc-50/10 active:bg-zinc-50/20 transition-colors; 
 }
