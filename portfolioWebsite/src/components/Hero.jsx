@@ -29,11 +29,13 @@ const Hero = () => {
                 Available for work
               </div>
             </div>
-            <h2 className="headline-1 max-w-[15ch] sm:max-2-[20ch] lg:max-w-[15ch] mt-5 mb-8 lg:mb-10">Building Scalable Modern Websites for the Future</h2>
+            <h2 className="headline-1 max-w-[15ch] sm:max-2-[20ch] lg:max-w-[15ch] mt-5 mb-8 lg:mb-10">Tech Enthusiast & Aspiring Developer</h2>
             <div className="flex items-center gap-3">
                 <ButtonPrimary 
                   label="Download CV"
                   icon="download"
+                  href="/Resume_Md_Muntasir_Azad.pdf" // Path to the file in the `public` folder
+                  download="Resume_Md_Muntasir_Azad.pdf" // This suggests a filename to the user
                 />
 
                 <ButtonOutline 

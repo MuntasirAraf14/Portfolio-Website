@@ -1,3 +1,4 @@
+
 import ReviewCard from './ReviewCard';
 
 const reviews = [
@@ -38,11 +39,12 @@ const reviews = [
     company: 'Skyline Digital'
   }
 ];
+
  const Review = () => {
   return (
     <section id="reviews" className="section overflow-hidden">
         <div className="container">
-            <h2 className="headline-2 mb-8">
+            <h2 className="headline-2 mb-8 reveal-up">
                 Client Reviews
             </h2>
             <div className="flex items-stretch gap-6 overflow-x-auto pb-8">
@@ -54,6 +56,7 @@ const reviews = [
                       content={content}
                       name={name}
                       imgSrc={imgSrc}
+                    
 
                     />
                 ))}

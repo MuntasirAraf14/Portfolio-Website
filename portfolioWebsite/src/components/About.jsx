@@ -2,20 +2,20 @@
 const aboutItems = [
   {
     label: 'Project done',
-    number: 45
+    number: 15
   },
   {
     label: 'Years of experience',
-    number: 10
+    number: 2
   }
 ];
 const About = () => {
   return (
     <section id="about" className="section">
         <div className="container">
-            <div className="bg-zinc-800 p-7 rounded-2xl shadow-lg flex flex-col gap-6 md:p-12">
+            <div className="bg-zinc-800 p-7 rounded-2xl shadow-lg flex flex-col gap-6 md:p-12 reveal-up">
                 <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl">
-                    Welcome! I&apos;m Henry, a professional web developer with a knack for crafting visually stunning and highly functional websites. Combining creativity and technical expertise. I transform your vision into digital masterpiece that excels in both appearance and performance.
+                    Hello! I&apos;m Araf, a recent Computer Science graduate, passionate about building user-centric web applications. I have hands-on experience with Full-stack development, UI/UX design, and mobile application development. I&apos;m always eager to learn new technologies and I'm eager to apply my skills to solve real-world problems.
 
                 </p>
                 <div className="flex flex-wrap items-center gap-4 md:gap-8">
@@ -30,12 +30,7 @@ const About = () => {
                         </div>
                     ))}
 
-                    <img
-                    src="../images/logo.svg"
-                    alt=""
-                    width={30}
-                    height={30}
-                    className="ml-auto md:w-[40px] md:h-[40px]"/>
+                    
                 </div>
             </div>
         </div>

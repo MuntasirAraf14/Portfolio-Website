@@ -1,3 +1,4 @@
+
 import PropTypes from "prop-types";
 
 const ratings = new Array(5);
@@ -7,7 +8,7 @@ ratings.fill({
 
     });
 
-    console.log(ratings);
+    
 
 
 const ReviewCard =  ({ content, name, imgSrc, company }) => {

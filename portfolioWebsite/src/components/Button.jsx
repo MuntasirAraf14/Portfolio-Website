@@ -1,111 +1,81 @@
+// src/components/Button.jsx (The new and improved version)
+
+import React from 'react';
 import propTypes from 'prop-types';
 
-const ButtonPrimary = ({
-    href,
-    target = '_self',
-    label,
-    icon,
-    classes
+// The Base Button component that contains all the logic
+const Button = ({
+  href,
+  download,
+  onClick,
+  type = 'button',
+  variant = 'primary', // 'primary' or 'outline'
+  target = '_self',
+  label,
+  icon,
+  classes = '' // Renamed from 'classes' to avoid conflict, good practice
 }) => {
-  if(href){
-  return (
-    <a 
-    href={href}
-    target={target}
-    className={"btn btn-primary " + classes}
-    >
-     {label}
+  // Define styles based on the variant
+  const variantStyles = {
+    primary: 'btn btn-primary',
+    outline: 'btn btn-outline'
+  };
 
-    {icon ?
-        <span className="material-symbols-rounded"
-        aria-hidden="true">
-        {icon}
+  const finalClassName = `${variantStyles[variant]} ${classes}`;
+
+  const content = (
+    <>
+      {label}
+      {icon && (
+        <span className="material-symbols-rounded ml-2" aria-hidden="true">
+          {icon}
         </span>
-        :undefined
-        }
-        </a>
-    
-    
-  )
-  }else{
+      )}
+    </>
+  );
+
+  // If href is provided, render a link
+  if (href) {
     return (
-        <button className={"btn btn-primary " + classes}>
-        {label}
-
-        {icon ?
-        <span className="material-symbols-rounded"
-        aria-hidden="true">
-        {icon}
-        </span>
-        :undefined
-        }
-        </button>
-    )
+      <a
+        href={href}
+        target={target}
+        className={finalClassName}
+        download={download}
+      >
+        {content}
+      </a>
+    );
   }
-}
 
-ButtonPrimary.propTypes = {
-  href: propTypes.string.isRequired,
+  // Otherwise, render a button
+  return (
+    <button
+      type={type}
+      className={finalClassName}
+      onClick={onClick}
+    >
+      {content}
+    </button>
+  );
+};
+
+Button.propTypes = {
+  href: propTypes.string,
+  download: propTypes.oneOfType([propTypes.string, propTypes.bool]),
+  onClick: propTypes.func,
+  type: propTypes.string,
+  variant: propTypes.oneOf(['primary', 'outline']),
   target: propTypes.string,
   label: propTypes.string.isRequired,
   icon: propTypes.string,
-  classes: propTypes.string
-}
-
-const ButtonOutline = ({
-    href,
-    target = '_self',
-    label,
-    icon,
-    classes
-}) => {
-  if(href){
-  return (
-    <a 
-    href={href}
-    target={target}
-    className={"btn btn-outline " + classes}
-    >
-     {label}
-
-    {icon ?
-        <span className="material-symbols-rounded"
-        aria-hidden="true">
-        {icon}
-        </span>
-        :undefined
-        }
-        </a>
-    
-    
-  )
-  }else{
-    return (
-        <button className={"btn btn-outline " + classes}>
-        {label}
-
-        {icon ?
-        <span className="material-symbols-rounded"
-        aria-hidden="true">
-        {icon}
-        </span>
-        :undefined
-        }
-        </button>
-    )
-  }
-}
+  classes: propTypes.string,
+};
 
 
-ButtonOutline.propTypes = {
-  href: propTypes.string.isRequired,
-  target: propTypes.string,
-  label: propTypes.string.isRequired,
-  icon: propTypes.string,
-  classes: propTypes.string
-}
+// Export specialized versions for convenience. This is the magic!
+// You still use <ButtonPrimary> and <ButtonOutline> in your app.
 
-export {
-    ButtonPrimary,
-    ButtonOutline
-}
+export const ButtonPrimary = (props) => <Button {...props} variant="primary" />;
+
+export const ButtonOutline = (props) => <Button {...props} variant="outline" />;
