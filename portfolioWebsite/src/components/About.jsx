@@ -15,7 +15,7 @@ const About = () => {
         <div className="container">
             <div className="bg-zinc-800 p-7 rounded-2xl shadow-lg flex flex-col gap-6 md:p-12 reveal-up">
                 <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl">
-                    Hello! I&apos;m Araf, a recent Computer Science graduate, passionate about building user-centric web applications. I have hands-on experience with Full-stack development, UI/UX design, and mobile application development. I&apos;m always eager to learn new technologies and I'm eager to apply my skills to solve real-world problems.
+                    Hello! I&apos;m Araf, a recent Computer Science graduate, passionate about building user-centric web applications. I have hands-on experience with Full-stack development, UI/UX design, and mobile application development. I&apos;m always eager to learn new technologies and challenge myself to apply my skills to solve real-world problems.
 
                 </p>
                 <div className="flex flex-wrap items-center gap-4 md:gap-8">

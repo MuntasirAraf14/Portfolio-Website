@@ -62,7 +62,7 @@ const skillItem = [
 ];  
 const Skill = () => {
   return (
-      <section className="section">
+      <section  id="skills" className="section">
         <div className="container">
             <h2 className="headline-2 xl reveal-up">
                 Essentials Tools I Use

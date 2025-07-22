@@ -68,12 +68,62 @@ body{
 /*Components*/
 
 /*Menu button*/
+/*Menu button*/
 .menu-btn {
-  @apply w-10 h-10 grid place-items-center bg-zinc-50/20 rounded-xl ring-inset ring-1 ring-zinc-50/[0.02] backdrop-blur-2xl hover:bg-zinc-50/12 transition-transform transition-colors active:scale-95;
-  /* Add duration and easing if not globally set or if you want specific ones */
-  @apply duration-150 ease-in-out; /* Example duration and easing */
+  /* FIX: Removed the space between 'transform,' and 'background-color' */
+  @apply w-10 h-10 grid place-items-center bg-zinc-50/10 rounded-xl ring-inset ring-1 ring-zinc-50/[0.02] backdrop-blur-2xl hover:bg-zinc-50/15 transition-[transform,background-color] active:scale-95;
+  
+  @apply duration-150 ease-in-out;
 }
 
+
+.navbar {
+  /* FIX: Changed md:blur-0 to the correct md:blur-none */
+  @apply absolute top-full mt-2 right-0 min-w-40 p-2 bg-zinc-50/10 rounded-2xl ring-inset ring-1 ring-zinc-50/5 scale-90 isolate blur-sm opacity-0 invisible transition-[opacity,transform,filter] md:static md:flex md:items-center md:mt-0 md:opacity-100 md:blur-none md:scale-100 md:visible backdrop-blur-2xl
+}
+/* ================== */
+/* Navbar Component   */
+/* ================== */
+
+/*
+ * The main navbar container.
+ * KEY: It MUST be 'position: relative' on desktop so the 'active-box'
+ * can be positioned correctly inside it.
+*/
+.navbar {
+  @apply absolute top-full mt-2 right-0 min-w-40 p-2 bg-zinc-50/10 rounded-2xl ring-inset ring-1 ring-zinc-50/5 scale-90 isolate blur-sm opacity-0 invisible transition-all duration-300 backdrop-blur-2xl;
+  @apply md:relative md:flex md:items-center md:mt-0 md:p-0 md:bg-transparent md:rounded-none md:ring-0 md:scale-100 md:blur-none md:opacity-100 md:visible;
+}
+
+/* This makes the mobile menu appear when the button is clicked. */
+.navbar.active {
+  @apply opacity-100 visible scale-100 blur-none;
+}
+
+/*
+ * The moving white highlight box.
+ * KEY: It is absolutely positioned inside the '.navbar'.
+ * Its 'z-index' is negative, so it sits BEHIND the link text.
+*/
+.navbar .active-box {
+  @apply absolute bg-zinc-50 rounded-lg -z-10 opacity-0;
+  /* KEY: A smooth transition for all properties. */
+  transition: top 500ms ease, left 500ms ease, width 500ms ease, height 500ms ease, opacity 300ms ease;
+}
+
+/* The style for each navigation link. */
+.nav-link {
+  @apply grid items-center h-9 px-4 text-sm font-medium tracking-wide text-zinc-50/50 hover:text-zinc-50 transition-colors duration-300;
+}
+
+/*
+ * The style for the ACTIVE navigation link.
+ * KEY: No space between '.nav-link' and '.active'.
+ * This changes the text color to be dark, making it visible against the white 'active-box'.
+*/
+.nav-link.active {
+  @apply text-zinc-900;
+}
 .btn .material-symbols-rounded{
   @apply text-[18px]
 }

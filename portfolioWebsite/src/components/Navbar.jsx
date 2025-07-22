@@ -1,42 +1,61 @@
-// Navbar.js
-import React from 'react';
+// Navbar.js - FINAL VERSION
 
-const Navbar = () => {
+import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
+const Navbar = ({ isNavOpen, activeSection, onLinkClick }) => {
+  const navRef = useRef(null);
+  const activeBoxRef = useRef(null);
+
   const navItems = [
-    { label: 'Home', link: '#home', className: 'nav-link' },
-    { label: 'About', link: '#about', className: 'nav-link' },
-    { label: 'Work', link: '#work', className: 'nav-link' },
-    { label: 'Reviews', link: '#reviews', className: 'nav-link' },
-    { label: 'Contact', link: '#contact', className: 'nav-link md:hidden' }
+    { id: 'home', label: 'Home', link: '#home' },
+    { id: 'about', label: 'About', link: '#about' },
+    { id: 'skills', label: 'Skills', link: '#skills' },
+    { id: 'work', label: 'Work', link: '#work' },
+    
+    { id: 'contact', label: 'Contact', link: '#contact', className: 'md:hidden' }
   ];
 
+  // This effect runs when the active section changes and moves the box.
+  useEffect(() => {
+    const activeLinkEl = navRef.current?.querySelector('a.active');
+    const activeBoxEl = activeBoxRef.current;
+
+    if (activeLinkEl && activeBoxEl) {
+      activeBoxEl.style.top = `${activeLinkEl.offsetTop}px`;
+      activeBoxEl.style.left = `${activeLinkEl.offsetLeft}px`;
+      activeBoxEl.style.width = `${activeLinkEl.offsetWidth}px`;
+      activeBoxEl.style.height = `${activeLinkEl.offsetHeight}px`;
+      activeBoxEl.style.opacity = '1';
+    } else if (activeBoxEl) {
+      activeBoxEl.style.opacity = '0';
+    }
+  }, [activeSection]);
+
   return (
-    // Added w-full so nav items can span the width of their parent (the w-64 div)
-    // Added py-2 for some vertical padding for the whole list in mobile view
-    <nav className="navbar flex flex-col w-full py-2 md:py-0 md:flex-row md:items-center md:space-x-6">
-      {navItems.map(({ label, link, className }, index) => (
+    <nav ref={navRef} className={`navbar ${isNavOpen ? 'active' : ''}`}>
+      {/* This is the moving white highlight box. */}
+      <div ref={activeBoxRef} className="active-box"></div>
+
+      {navItems.map(({ id, label, link, className = '' }) => (
         <a
           href={link}
-          key={index}
-          className={`${className} 
-            block text-zinc-200 
-            px-4 py-3  /* Padding for mobile links */
-            hover:text-white hover:bg-zinc-700 /* Hover effects for mobile */
-            md:py-0 md:px-0 md:hover:bg-transparent /* Reset padding and mobile bg hover for desktop */
-            transition-colors duration-150 ease-in-out /* Smooth transition */
-          `}
-          onClick={() => {
-            // Optional: Close menu on link click for better UX on mobile
-            // You would need to pass down setIsMobileMenuOpen and call setIsMobileMenuOpen(false)
-            // For now, this is just a placeholder if you want to implement it.
-            // console.log("Link clicked");
-          }}
+          key={id}
+          // This correctly adds the 'active' class to the link itself.
+          className={`nav-link ${activeSection === id ? 'active' : ''} ${className}`}
+          onClick={onLinkClick}
         >
           {label}
         </a>
       ))}
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  isNavOpen: PropTypes.bool.isRequired,
+  activeSection: PropTypes.string.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
 };
 
 export default Navbar;

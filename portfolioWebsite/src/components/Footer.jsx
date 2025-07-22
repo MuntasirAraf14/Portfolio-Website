@@ -91,8 +91,9 @@ const Footer = () => {
             </div>
             <div className="py-3">
             <div className="mb-8 flex items-center justify-between pt-10 border-t border-zinc-800 ">
+              
                 <a href="/" className="">
-                    <img src="/images/logo.svg" width={40} height={40} alt="Logo" className="" />
+                    <img src="/images/unnamed_1.jpg" width={40} height={40} alt="Logo" className="" />
                 </a>
 
                 <p className="text-sm text-zinc-400">
